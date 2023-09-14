@@ -4,12 +4,12 @@ let timer = document.getElementById("timer");
 let workOrBreak = 0;
 
 //set work's duration
-let minWorkDeparture = 25;
-let secWorkDeparture = 0;
+let minWorkDeparture = 0;
+let secWorkDeparture = 10;
 
 //set break's duration
-let minBreakDeparture = 5;
-let secBreakDeparture = 0;
+let minBreakDeparture = 0;
+let secBreakDeparture = 10;
 
 let time = minWorkDeparture * 60 + secWorkDeparture;
 
@@ -17,8 +17,20 @@ minWorkDeparture = minWorkDeparture < 10 ? "0" + minWorkDeparture : minWorkDepar
 secWorkDeparture = secWorkDeparture < 10 ? "0" + secWorkDeparture : secWorkDeparture;
 timer.innerText = `${minWorkDeparture}:${secWorkDeparture}`;
 
+// initialize buttons
+/*
+onclick="timeRunning = setInterval(timeRunningFunc, 1000)" (bouton lancer)
+ onclick="clearInterval(timeRunning)" (bouton mettre en pause)
+*/
+let buttonStart = document.getElementById("start");
+buttonStart.addEventListener("click", () => {
+    timeRunning = setInterval(timeRunningFunc, 1000);
+});
+
 function timeRunningFunc() {
-    //initialise minutes and seconds
+    console.log("coucou");
+
+    //initialize minutes and seconds
     let min = parseInt(time / 60, 10);
     let sec = parseInt(time % 60, 10);
 
@@ -44,7 +56,7 @@ function timeRunningFunc() {
     else {
         //reduce the time by one second until zero seconds left
         //and can't go less than 0 seconds
-        timer.innerText = `${min}:${sec}`;
         time = time <= 0 ? 0 : time - 1;
+        timer.innerText = `${min}:${sec}`;
     }
 }
