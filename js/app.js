@@ -1,62 +1,100 @@
+// collect the timer location
 let timer = document.getElementById("timer");
 
-//set counter to switch between work and break
-let workOrBreak = 0;
+// set counter to switch between work and break (initialized on break time)
+let workOrBreak = 1;
 
-//set work's duration
-let minWorkDeparture = 0;
-let secWorkDeparture = 10;
+// set work's duration (by default)
+let minWorkDeparture = 25;
+let secWorkDeparture = 0;
 
-//set break's duration
-let minBreakDeparture = 0;
-let secBreakDeparture = 10;
+// set break's duration (by default)
+let minBreakDeparture = 5;
+let secBreakDeparture = 0;
 
-let time = minWorkDeparture * 60 + secWorkDeparture;
-
+// good time display, with zero before if minutes or seconds choose are smaller than 10
 minWorkDeparture = minWorkDeparture < 10 ? "0" + minWorkDeparture : minWorkDeparture;
 secWorkDeparture = secWorkDeparture < 10 ? "0" + secWorkDeparture : secWorkDeparture;
+
+// display by default of the timer
 timer.innerText = `${minWorkDeparture}:${secWorkDeparture}`;
 
+// set the variable for the timer and its interval
+let time;
+let timeRunning;
+
 // initialize buttons
-/*
-onclick="timeRunning = setInterval(timeRunningFunc, 1000)" (bouton lancer)
- onclick="clearInterval(timeRunning)" (bouton mettre en pause)
-*/
+// button to start the timer
 let buttonStart = document.getElementById("start");
 buttonStart.addEventListener("click", () => {
-    timeRunning = setInterval(timeRunningFunc, 1000);
+    setTime();
+    timeRunning = setInterval(timeRunningFunction, 1000);
 });
 
-function timeRunningFunc() {
-    console.log("coucou");
+// button to personalize Work time and Break time
+let buttonSetTime = document.getElementById("setTime");
+buttonSetTime.addEventListener("click", () => {
+    // collect data from the input
+    minWorkDeparture = document.getElementById("choice").children[1].value;
+    console.log(document.getElementById("choice").children[1].value);
+    secWorkDeparture = document.getElementById("choice").children[2].value;
+    console.log(document.getElementById("choice").children[2].value);
+    minBreakDeparture = document.getElementById("choice").children[4].value;
+    console.log(document.getElementById("choice").children[4].value);
+    secBreakDeparture = document.getElementById("choice").children[5].value;
+    console.log(document.getElementById("choice").children[5].value);
 
-    //initialize minutes and seconds
-    let min = parseInt(time / 60, 10);
-    let sec = parseInt(time % 60, 10);
+    // prepare the display
+    minWorkDeparture = minWorkDeparture < 10 ? "0" + minWorkDeparture : minWorkDeparture;
+    secWorkDeparture = secWorkDeparture < 10 ? "0" + secWorkDeparture : secWorkDeparture;
+    minBreakDeparture = minBreakDeparture < 10 ? "0" + minBreakDeparture : minBreakDeparture;
+    secBreakDeparture = secBreakDeparture < 10 ? "0" + secBreakDeparture : secBreakDeparture;
+    
+    // display the new timer
+    timer.innerText = `${minWorkDeparture}:${secWorkDeparture}`;
+});
 
-    //always have minutes and seconds in 2 figure
-    min = min < 10 ? "0" + min : min;
-    sec = sec < 10 ? "0" + sec : sec;
-  
-    //running time and switch beatween work and break
-    if (time <= 0 && workOrBreak == 0) {
-        //display 00:00
-        timer.innerText = `${min}:${sec}`;
-        //switch to break time
-        time = minBreakDeparture * 60 + secBreakDeparture;
+// button to reset completely the timer
+let buttonReset = document.getElementById("reset");
+buttonReset.addEventListener("click", () => {
+    clearInterval(timeRunning);
+    workOrBreak = 1;
+    timer.innerText = `${minWorkDeparture}:${secWorkDeparture}`;
+})
+
+// initialize time
+function setTime() {
+    // switch to break time if it was work time
+    if (workOrBreak == 0) {
+        time = parseInt(minBreakDeparture) * 60 + parseInt(secBreakDeparture);
+        timer.innerText = `${minBreakDeparture}:${secBreakDeparture}`;
         workOrBreak = 1;
     }
-    else if (time <= 0 && workOrBreak == 1) {
-        //display 00:00
-        timer.innerText = `${min}:${sec}`;
-        //switch to work time
-        time = minWorkDeparture * 60 + secWorkDeparture;
+    // switch to work time if it was break time
+    else {
+        time = parseInt(minWorkDeparture) * 60 + parseInt(secWorkDeparture);
+        timer.innerText = `${minWorkDeparture}:${secWorkDeparture}`;
         workOrBreak = 0;
     }
+}
+
+function timeRunningFunction() {
+    if(time <= 0) {
+        setTime();
+    }
     else {
-        //reduce the time by one second until zero seconds left
-        //and can't go less than 0 seconds
         time = time <= 0 ? 0 : time - 1;
+
+        // initialize minutes and seconds
+        let min = parseInt(time / 60, 10);
+        let sec = parseInt(time % 60, 10);
+
+        // always have minutes and seconds in 2 figure
+        min = min < 10 ? "0" + min : min;
+        sec = sec < 10 ? "0" + sec : sec;
+    
+        // reduce the time by one second until zero seconds left
+        // and can't go less than 0 seconds
         timer.innerText = `${min}:${sec}`;
     }
 }
