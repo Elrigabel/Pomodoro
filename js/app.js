@@ -24,42 +24,42 @@ let time;
 let timeRunning;
 
 // initialize buttons
-// button to start the timer
 let buttonStart = document.getElementById("start");
+let buttonReset = document.getElementById("reset");
+let buttonSetTime = document.getElementById("setTime");
+
+// button to start the timer
 buttonStart.addEventListener("click", () => {
     setTime();
     timeRunning = setInterval(timeRunningFunction, 1000);
+    buttonReset.style.display = "block";
+    buttonStart.style.display = "none";
 });
 
 // button to personalize Work time and Break time
-let buttonSetTime = document.getElementById("setTime");
 buttonSetTime.addEventListener("click", () => {
     // collect data from the input
-    minWorkDeparture = document.getElementById("choice").children[1].value;
-    console.log(document.getElementById("choice").children[1].value);
-    secWorkDeparture = document.getElementById("choice").children[2].value;
-    console.log(document.getElementById("choice").children[2].value);
-    minBreakDeparture = document.getElementById("choice").children[4].value;
-    console.log(document.getElementById("choice").children[4].value);
-    secBreakDeparture = document.getElementById("choice").children[5].value;
-    console.log(document.getElementById("choice").children[5].value);
+    if (setTimeCollectData()) {
+        // prepare the display
+        minWorkDeparture = minWorkDeparture < 10 ? "0" + minWorkDeparture : minWorkDeparture;
+        secWorkDeparture = secWorkDeparture < 10 ? "0" + secWorkDeparture : secWorkDeparture;
+        minBreakDeparture = minBreakDeparture < 10 ? "0" + minBreakDeparture : minBreakDeparture;
+        secBreakDeparture = secBreakDeparture < 10 ? "0" + secBreakDeparture : secBreakDeparture;
+        
+        // display the new timer
+        timer.innerText = `${minWorkDeparture}:${secWorkDeparture}`;
+    }
 
-    // prepare the display
-    minWorkDeparture = minWorkDeparture < 10 ? "0" + minWorkDeparture : minWorkDeparture;
-    secWorkDeparture = secWorkDeparture < 10 ? "0" + secWorkDeparture : secWorkDeparture;
-    minBreakDeparture = minBreakDeparture < 10 ? "0" + minBreakDeparture : minBreakDeparture;
-    secBreakDeparture = secBreakDeparture < 10 ? "0" + secBreakDeparture : secBreakDeparture;
     
-    // display the new timer
-    timer.innerText = `${minWorkDeparture}:${secWorkDeparture}`;
 });
 
 // button to reset completely the timer
-let buttonReset = document.getElementById("reset");
 buttonReset.addEventListener("click", () => {
     clearInterval(timeRunning);
     workOrBreak = 1;
     timer.innerText = `${minWorkDeparture}:${secWorkDeparture}`;
+    buttonReset.style.display = "none";
+    buttonStart.style.display = "block";
 })
 
 // initialize time
@@ -97,4 +97,26 @@ function timeRunningFunction() {
         // and can't go less than 0 seconds
         timer.innerText = `${min}:${sec}`;
     }
+}
+
+function setTimeCollectData() {
+    if (document.getElementById("choice").children[1].value < 0
+    || document.getElementById("choice").children[2].value < 0
+    || document.getElementById("choice").children[4].value < 0
+    || document.getElementById("choice").children[5].value < 0) {
+        return false;
+    }
+    else {
+        minWorkDeparture = document.getElementById("choice").children[1].value;
+        console.log(document.getElementById("choice").children[1].value);
+        secWorkDeparture = document.getElementById("choice").children[2].value;
+        console.log(document.getElementById("choice").children[2].value);
+        minBreakDeparture = document.getElementById("choice").children[4].value;
+        console.log(document.getElementById("choice").children[4].value);
+        secBreakDeparture = document.getElementById("choice").children[5].value;
+        console.log(document.getElementById("choice").children[5].value);
+
+        return true;
+    }
+    
 }

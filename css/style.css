@@ -1,4 +1,29 @@
 html {
     background-color: #da2f2f;
     color: #f2f2f2;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+}
+
+#timer {
+    font-size: 5em;
+}
+
+#box {
+    display: block;
+}
+
+#reset {
+    display: none;
+    margin: auto;
+}
+
+#start {
+    display: block;
+    margin: auto;
+    background-color: url(images/startButton.png);
 }
