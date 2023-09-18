@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,22 +20,34 @@
         </br>
 
         <!--<button id="start"></button> -->
-        <input id="start" type=image src="images/startButton.png"/>
+        <div id="buttonStart">
+            <input id="start" type=image src="images/startButton.png" onmouseover="this.src='images/startButtonHover.png'" onmouseout="this.src='images/startButton.png'"/>
+            <input id="settings" type=image src="images/setTimer.png" onmouseover="this.src='images/setTimerHover.png'" onmouseout="this.src='images/setTimer.png'" href="#choice"/>
+        </div>
+        <div id="buttonReset">
+            <input id="reset" type=image src="images/stopButton.png" onmouseover="this.src='images/stopButtonHover.png'" onmouseout="this.src='images/stopButton.png'"/>
+        </div>
         
-        <button id="reset">Reset</button>
 
-    </brshake-horizontal>
 
-        <div id="choice">
-            <label>Work time</label>
-            <input type="number" min="0" max="1440" >
-            <input type="number" min="0" max="59" >
+        <div id="popup" class="overlay">
+            <div id="popupContent">
+                <label>Work time : </label>
+                <input type="number" min="0" max="1440" >
+                <input type="number" min="0" max="59" >
 
-            <label>Break time</label>
-            <input type="number" min="0" max="1440" >
-            <input type="number" min="0" max="59" >
+                </br>
 
-            <button id="setTime" >Validate</button>
+                <label>Break time : </label>
+                <input type="number" min="0" max="1440" >
+                <input type="number" min="0" max="59" >
+
+                </br>
+
+                <button id="setTime" >Validate</button>
+                <button id="closePopup">Close</button>
+            </div>
+            
         </div>
 
     </div>

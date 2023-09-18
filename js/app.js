@@ -27,6 +27,9 @@ let timeRunning;
 let buttonStart = document.getElementById("start");
 let buttonReset = document.getElementById("reset");
 let buttonSetTime = document.getElementById("setTime");
+let buttonSettings = document.getElementById("settings");
+let buttonCloseSettings = document.getElementById("closePopup");
+
 
 // button to start the timer
 buttonStart.addEventListener("click", () => {
@@ -34,6 +37,7 @@ buttonStart.addEventListener("click", () => {
     timeRunning = setInterval(timeRunningFunction, 1000);
     buttonReset.style.display = "block";
     buttonStart.style.display = "none";
+    buttonSettings.style.display = "none";
 });
 
 // button to personalize Work time and Break time
@@ -60,6 +64,14 @@ buttonReset.addEventListener("click", () => {
     timer.innerText = `${minWorkDeparture}:${secWorkDeparture}`;
     buttonReset.style.display = "none";
     buttonStart.style.display = "block";
+    buttonSettings.style.display = "block";
+})
+
+buttonSettings.addEventListener("click", () => {
+    document.getElementById("popup").classList.add("show");
+})
+buttonCloseSettings.addEventListener("click", () => {
+    document.getElementById("popup").classList.remove("show");
 })
 
 // initialize time
@@ -100,23 +112,35 @@ function timeRunningFunction() {
 }
 
 function setTimeCollectData() {
-    if (document.getElementById("choice").children[1].value < 0
-    || document.getElementById("choice").children[2].value < 0
-    || document.getElementById("choice").children[4].value < 0
-    || document.getElementById("choice").children[5].value < 0) {
+    if (document.getElementById("popupContent").children[1].value < 0
+    || document.getElementById("popupContent").children[2].value < 0
+    || document.getElementById("popupContent").children[4].value < 0
+    || document.getElementById("popupContent").children[5].value < 0) {
         return false;
     }
     else {
-        minWorkDeparture = document.getElementById("choice").children[1].value;
-        console.log(document.getElementById("choice").children[1].value);
-        secWorkDeparture = document.getElementById("choice").children[2].value;
-        console.log(document.getElementById("choice").children[2].value);
-        minBreakDeparture = document.getElementById("choice").children[4].value;
-        console.log(document.getElementById("choice").children[4].value);
-        secBreakDeparture = document.getElementById("choice").children[5].value;
-        console.log(document.getElementById("choice").children[5].value);
+        minWorkDeparture = document.getElementById("popupContent").children[1].value;
+        console.log(document.getElementById("popupContent").children[1].value);
+        secWorkDeparture = document.getElementById("popupContent").children[2].value;
+        console.log(document.getElementById("popupContent").children[2].value);
+        minBreakDeparture = document.getElementById("popupContent").children[4].value;
+        console.log(document.getElementById("popupContent").children[4].value);
+        secBreakDeparture = document.getElementById("popupContent").children[5].value;
+        console.log(document.getElementById("popupContent").children[5].value);
 
         return true;
     }
     
 }
+
+
+/*
+
+let divButtonStart = document.getElementById("buttonStart");
+divButtonStart.addEventListener("mouseover", () => {
+    divButtonStart.innerHTML = `<input id="start" type=image src="images/startButtonHover.png"/>`
+})
+
+divButtonStart.addEventListener("mouseover", () => {
+    divButtonStart.innerHTML = `<input id="start" type=image src="images/startButtonHover.png"/>`
+}) */
