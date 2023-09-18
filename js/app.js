@@ -28,7 +28,6 @@ let buttonStart = document.getElementById("start");
 let buttonReset = document.getElementById("reset");
 let buttonSetTime = document.getElementById("setTime");
 let buttonSettings = document.getElementById("settings");
-let buttonCloseSettings = document.getElementById("closePopup");
 
 
 // button to start the timer
@@ -60,6 +59,8 @@ buttonSetTime.addEventListener("click", () => {
         
         // display the new timer
         timer.innerText = `${minWorkDeparture}:${secWorkDeparture}`;
+
+        document.getElementById("popup").classList.remove("show");
     }
 
 });
@@ -89,9 +90,6 @@ buttonReset.addEventListener("mouseout", () => {
 
 buttonSettings.addEventListener("click", () => {
     document.getElementById("popup").classList.add("show");
-})
-buttonCloseSettings.addEventListener("click", () => {
-    document.getElementById("popup").classList.remove("show");
 })
 
 buttonSettings.addEventListener("mouseover", () => {
