@@ -2,7 +2,7 @@
 
 html {
     background-color: #d84747;
-    color: #811f1f;
+    color: #5b1212;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,6 +59,8 @@ h1 {
     padding: 20px;
     width: fit-content;
     border-radius: 5rem;
+    font-size: 3vw;
+    color: #ee8d8d;
 }
 
 .show {
@@ -71,7 +73,7 @@ h1 {
 }
 
 .labelSettings {
-    font-size: 3vw;
+    font-size: 2vw;
     color: #ee8d8d;
 }
 

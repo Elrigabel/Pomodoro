@@ -78,6 +78,15 @@ buttonReset.addEventListener("click", () => {
     document.getElementById("break").style.borderBottomStyle = "none";
 })
 
+buttonReset.addEventListener("mouseover", () => {
+    buttonReset.setAttribute("src", "images/stopButtonHover.png");
+})
+
+buttonReset.addEventListener("mouseout", () => {
+    buttonReset.setAttribute("src", "images/stopButton.png");
+})
+
+
 buttonSettings.addEventListener("click", () => {
     document.getElementById("popup").classList.add("show");
 })
@@ -158,15 +167,3 @@ function setTimeCollectData() {
     }
     
 }
-
-
-/*
-
-let divButtonStart = document.getElementById("buttonStart");
-divButtonStart.addEventListener("mouseover", () => {
-    divButtonStart.innerHTML = `<input id="start" type=image src="images/startButtonHover.png"/>`
-})
-
-divButtonStart.addEventListener("mouseover", () => {
-    divButtonStart.innerHTML = `<input id="start" type=image src="images/startButtonHover.png"/>`
-}) */
