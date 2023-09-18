@@ -40,6 +40,14 @@ buttonStart.addEventListener("click", () => {
     buttonSettings.style.display = "none";
 });
 
+buttonStart.addEventListener("mouseover", () => {
+    buttonStart.setAttribute("src", "images/startButtonHover.png");
+})
+
+buttonStart.addEventListener("mouseout", () => {
+    buttonStart.setAttribute("src", "images/startButton.png");
+})
+
 // button to personalize Work time and Break time
 buttonSetTime.addEventListener("click", () => {
     // collect data from the input
@@ -54,8 +62,9 @@ buttonSetTime.addEventListener("click", () => {
         timer.innerText = `${minWorkDeparture}:${secWorkDeparture}`;
     }
 
-    
 });
+
+
 
 // button to reset completely the timer
 buttonReset.addEventListener("click", () => {
@@ -65,6 +74,8 @@ buttonReset.addEventListener("click", () => {
     buttonReset.style.display = "none";
     buttonStart.style.display = "block";
     buttonSettings.style.display = "block";
+    document.getElementById("working").style.borderBottomStyle = "none";
+    document.getElementById("break").style.borderBottomStyle = "none";
 })
 
 buttonSettings.addEventListener("click", () => {
@@ -74,6 +85,14 @@ buttonCloseSettings.addEventListener("click", () => {
     document.getElementById("popup").classList.remove("show");
 })
 
+buttonSettings.addEventListener("mouseover", () => {
+    buttonSettings.setAttribute("src", "images/setTimerHover.png");
+})
+
+buttonSettings.addEventListener("mouseout", () => {
+    buttonSettings.setAttribute("src", "images/setTimer.png");
+})
+
 // initialize time
 function setTime() {
     // switch to break time if it was work time
@@ -81,12 +100,16 @@ function setTime() {
         time = parseInt(minBreakDeparture) * 60 + parseInt(secBreakDeparture);
         timer.innerText = `${minBreakDeparture}:${secBreakDeparture}`;
         workOrBreak = 1;
+        document.getElementById("break").style.borderBottomStyle = "solid";
+        document.getElementById("working").style.borderBottomStyle = "none";
     }
     // switch to work time if it was break time
     else {
         time = parseInt(minWorkDeparture) * 60 + parseInt(secWorkDeparture);
         timer.innerText = `${minWorkDeparture}:${secWorkDeparture}`;
         workOrBreak = 0;
+        document.getElementById("working").style.borderBottomStyle = "solid";
+        document.getElementById("break").style.borderBottomStyle = "none";
     }
 }
 
@@ -112,22 +135,25 @@ function timeRunningFunction() {
 }
 
 function setTimeCollectData() {
-    if (document.getElementById("popupContent").children[1].value < 0
-    || document.getElementById("popupContent").children[2].value < 0
-    || document.getElementById("popupContent").children[4].value < 0
-    || document.getElementById("popupContent").children[5].value < 0) {
+    if (document.getElementById("minWork").value < 0
+    || document.getElementById("secWork").value < 0
+    || document.getElementById("minBreak").value < 0
+    || document.getElementById("secBreak").value < 0
+    || document.getElementById("secWork").value > 59
+    || document.getElementById("secBreak").value > 59) {
+        document.getElementById("error").innerHTML = "Please enter correct data";
         return false;
     }
     else {
-        minWorkDeparture = document.getElementById("popupContent").children[1].value;
-        console.log(document.getElementById("popupContent").children[1].value);
-        secWorkDeparture = document.getElementById("popupContent").children[2].value;
-        console.log(document.getElementById("popupContent").children[2].value);
-        minBreakDeparture = document.getElementById("popupContent").children[4].value;
-        console.log(document.getElementById("popupContent").children[4].value);
-        secBreakDeparture = document.getElementById("popupContent").children[5].value;
-        console.log(document.getElementById("popupContent").children[5].value);
-
+        minWorkDeparture = document.getElementById("minWork").value;
+        console.log(document.getElementById("minWork").value);
+        secWorkDeparture = document.getElementById("secWork").value;
+        console.log(document.getElementById("secWork").value);
+        minBreakDeparture = document.getElementById("minBreak").value;
+        console.log(document.getElementById("minBreak").value);
+        secBreakDeparture = document.getElementById("secBreak").value;
+        console.log(document.getElementById("secBreak").value);
+        document.getElementById("error").innerHTML = "";
         return true;
     }
     

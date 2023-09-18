@@ -11,45 +11,44 @@
 
     <div id="box">
         <div id="status">
-            
-
+            <span id="working">Working</span>
+            <span id="break">Break</span>
         </div>
 
         <div id="timer"></div>
 
         </br>
 
-        <!--<button id="start"></button> -->
+        <div id="popup" class="overlay">
+            <div id="popupContent">
+                <label class="labelSettings">Work time : </label>
+                <input id="minWork" class="inputSettings" type="number" min="0" max="1440" value="25">
+                <input id="secWork" class="inputSettings" type="number" min="0" max="59" value="0">
+
+                </br>
+
+                <label class="labelSettings">Break time : </label>
+                <input id="minBreak" class="inputSettings" type="number" min="0" max="1440" value="5">
+                <input id="secBreak" class="inputSettings" type="number" min="0" max="59" value="0">
+
+                </br>
+
+                <button class="buttonSettings" id="setTime" >Validate</button>
+                <button class="buttonSettings" id="closePopup" >Close</button>
+            </div>
+            
+        </div>
+
+        <span id="error"></span>
+
         <div id="buttonStart">
-            <input id="start" type=image src="images/startButton.png" onmouseover="this.src='images/startButtonHover.png'" onmouseout="this.src='images/startButton.png'"/>
-            <input id="settings" type=image src="images/setTimer.png" onmouseover="this.src='images/setTimerHover.png'" onmouseout="this.src='images/setTimer.png'" href="#choice"/>
+            <input id="start" type=image src="images/startButton.png" />
+            <input id="settings" type=image src="images/setTimer.png" />
         </div>
         <div id="buttonReset">
             <input id="reset" type=image src="images/stopButton.png" onmouseover="this.src='images/stopButtonHover.png'" onmouseout="this.src='images/stopButton.png'"/>
         </div>
         
-
-
-        <div id="popup" class="overlay">
-            <div id="popupContent">
-                <label class="labelSettings">Work time : </label>
-                <input class="inputSettings" type="number" min="0" max="1440" >:
-                <input class="inputSettings" type="number" min="0" max="59" >
-
-                </br>
-
-                <label class="labelSettings">Break time : </label>
-                <input class="inputSettings" type="number" min="0" max="1440" >:
-                <input class="inputSettings" type="number" min="0" max="59" >
-
-                </br>
-
-                <button class="buttonSettings" id="setTime" >Validate</button>
-                <button class="buttonSettings" id="closePopup">Close</button>
-            </div>
-            
-        </div>
-
     </div>
 
     <!-- Script -->
