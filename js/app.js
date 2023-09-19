@@ -61,6 +61,8 @@ buttonSetTime.addEventListener("click", () => {
         timer.innerText = `${minWorkDeparture}:${secWorkDeparture}`;
 
         document.getElementById("popup").classList.remove("show");
+        buttonStart.style.display = "block";
+        buttonSettings.style.display = "block";
     }
 
 });
@@ -90,6 +92,8 @@ buttonReset.addEventListener("mouseout", () => {
 
 buttonSettings.addEventListener("click", () => {
     document.getElementById("popup").classList.add("show");
+    buttonStart.style.display = "none";
+    buttonSettings.style.display = "none";
 })
 
 buttonSettings.addEventListener("mouseover", () => {
@@ -148,7 +152,7 @@ function setTimeCollectData() {
     || document.getElementById("secBreak").value < 0
     || document.getElementById("secWork").value > 59
     || document.getElementById("secBreak").value > 59) {
-        document.getElementById("error").innerHTML = "Please enter correct data";
+        //document.getElementById("error").innerHTML = "Please enter correct data";
         return false;
     }
     else {
