@@ -123,6 +123,7 @@ function setTime() {
     }
 }
 
+// function for the timer
 function timeRunningFunction() {
     if(time <= 0) {
         setTime();
@@ -144,8 +145,9 @@ function timeRunningFunction() {
     }
 }
 
+// function to collet the data in the settings
 function setTimeCollectData() {
-    //check if the data are correct
+    // check if the data are correct (seconds are less than 60 and nothing less than 0)
     if (document.getElementById("minWork").value < 0
     || document.getElementById("secWork").value < 0
     || document.getElementById("minBreak").value < 0
@@ -155,11 +157,11 @@ function setTimeCollectData() {
         return false;
     }
     else {
+        // set work time and break time
         minWorkDeparture = document.getElementById("minWork").value;
         secWorkDeparture = document.getElementById("secWork").value;
         minBreakDeparture = document.getElementById("minBreak").value;
         secBreakDeparture = document.getElementById("secBreak").value;
-        document.getElementById("error").innerHTML = "";
         return true;
     }
     
