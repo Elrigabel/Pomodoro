@@ -11,7 +11,7 @@ html {
 
 h1 {
     text-align: center;
-    font-size: 5vw;
+    font-size: 7vh;
 }
 
 #buttonStart, #buttonReset {
@@ -19,13 +19,13 @@ h1 {
     height: auto;
     width: auto;
     text-align:start;
-    margin-top: 2vw;
+    margin-top: 3vh;
     
 }
 
 #timer {
     text-align: center;
-    font-size: 8vw;
+    font-size: 10vh;
     border-style:solid;
     border-color: #811f1f;
 }
@@ -37,14 +37,14 @@ h1 {
 #reset {
     display: none;
     margin: auto;
-    block-size: 5vw;
+    block-size: 7vh;
 }
 
 #start, #settings {
     margin: auto;
     padding: auto;
     text-align: center;
-    width: 5vw;
+    width: 7vh;
 }
 
 .overlay {
@@ -59,7 +59,7 @@ h1 {
     padding: 20px;
     width: fit-content;
     border-radius: 5rem;
-    font-size: 3vw;
+    font-size: 5vh;
     color: #ee8d8d;
 }
 
@@ -68,18 +68,18 @@ h1 {
     text-align: center;
     justify-content: center;
     vertical-align: middle;
-    margin-top: 3vw;
+    margin-top: 5vh;
     
 }
 
 .labelSettings {
-    font-size: 2vw;
+    font-size: 4vh;
     color: #ee8d8d;
 }
 
 .inputSettings {
-    width: 4vw;
-    font-size: 1.5vw;
+    width: 6vh;
+    font-size: 3.5vh;
     border-radius: 5rem;
 }
 
@@ -89,10 +89,10 @@ h1 {
 }
 
 .buttonSettings {
-    margin-top: 1vw;
-    width: 9vw;
-    height: 3vw;
-    font-size: 2vw;
+    margin-top: 1;
+    width: 11vh;
+    height: 5vh;
+    font-size: 4vh;
     border-radius: 5rem;
     background-color: #d84747;
     color: #ee8d8d;
@@ -113,6 +113,6 @@ h1 {
 }
 
 #working, #break {
-    font-size: 2vw;
-    margin: 1vw;
+    font-size: 4vh;
+    margin: 3vh;
 }
