@@ -90,7 +90,7 @@ h1 {
 
 .buttonSettings {
     margin-top: 1;
-    width: 11vh;
+    width: fit-content;
     height: 5vh;
     font-size: 4vh;
     border-radius: 5rem;
