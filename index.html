@@ -7,58 +7,63 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>TIMER POMODORO</h1>
+    <head>
+        <h1>TIMER POMODORO</h1>
+    </head>
 
-    <div id="box">
-        <div id="status">
-            <span id="working">Working</span>
-            <span id="break">Break</span>
-        </div>
+    <main>
+        <div id="box">
+            <div id="status">
+                <span id="working">Working</span>
+                <span id="break">Break</span>
+            </div>
 
-        <div id="timer"></div>
+            <div id="timer"></div>
 
-        </br>
+            </br>
 
-        <div id="popup" class="overlay">
-            <div id="popupContent">
-                <form action="javascript:void(0)">
-                    <span>Work time :</span>
-                    </br>
-                    <label class="labelSettings" for="minWork">Min : </label>
-                    <input id="minWork" class="inputSettings" type="number" min="0" value="25">
-                    <label class="labelSettings" for="secWork">Sec : </label>
-                    <input id="secWork" class="inputSettings" type="number" min="0" max="59" value="0">
+            <div id="popup" class="overlay">
+                <div id="popupContent">
+                    <form action="javascript:void(0)">
+                        <span>Work time :</span>
+                        </br>
+                        <label class="labelSettings" for="minWork">Min : </label>
+                        <input id="minWork" class="inputSettings" type="number" min="0" value="25">
+                        <label class="labelSettings" for="secWork">Sec : </label>
+                        <input id="secWork" class="inputSettings" type="number" min="0" max="59" value="0">
 
-                    </br>
+                        </br>
 
-                    <span>Break time :</span>
-                    </br>
-                    <label class="labelSettings" for="minBreak">Min : </label>
-                    <input id="minBreak" class="inputSettings" type="number" min="0" value="5">
-                    <label class="labelSettings" for="secBreak">Sec : </label>
-                    <input id="secBreak" class="inputSettings" type="number" min="0" max="59" value="0">
+                        <span>Break time :</span>
+                        </br>
+                        <label class="labelSettings" for="minBreak">Min : </label>
+                        <input id="minBreak" class="inputSettings" type="number" min="0" value="5">
+                        <label class="labelSettings" for="secBreak">Sec : </label>
+                        <input id="secBreak" class="inputSettings" type="number" min="0" max="59" value="0">
 
-                    </br>
+                        </br>
 
-                    <button class="buttonSettings" id="setTime" alt="Validate the settings">Validate</button>
-                </form>
+                        <button class="buttonSettings" id="setTime" alt="Validate the settings">Validate</button>
+                    </form>
+                </div>
+                
+            </div>
+
+            <span id="error"></span>
+
+            <div id="buttonStart">
+                <input id="start" type=image src="images/startButton.png" alt="Start the timer" />
+                <input id="settings" type=image src="images/setTimer.png" alt="Open the settings" />
+            </div>
+            <div id="buttonReset">
+                <input id="reset" type=image src="images/stopButton.png" alt="Reset the timer" />
             </div>
             
         </div>
 
-        <span id="error"></span>
+        <!-- Script -->
+        <script src="js/app.js"></script>
 
-        <div id="buttonStart">
-            <input id="start" type=image src="images/startButton.png" alt="Start the timer" />
-            <input id="settings" type=image src="images/setTimer.png" alt="Open the settings" />
-        </div>
-        <div id="buttonReset">
-            <input id="reset" type=image src="images/stopButton.png" alt="Reset the timer" />
-        </div>
-        
-    </div>
-
-    <!-- Script -->
-    <script src="js/app.js"></script>
+    </main>
 </body>
 </html>

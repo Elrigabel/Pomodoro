@@ -47,28 +47,6 @@ buttonStart.addEventListener("mouseout", () => {
     buttonStart.setAttribute("src", "images/startButton.png");
 })
 
-// button to personalize Work time and Break time
-buttonSetTime.addEventListener("click", () => {
-    // collect data from the input
-    if (setTimeCollectData()) {
-        // prepare the display
-        minWorkDeparture = minWorkDeparture < 10 ? "0" + minWorkDeparture : minWorkDeparture;
-        secWorkDeparture = secWorkDeparture < 10 ? "0" + secWorkDeparture : secWorkDeparture;
-        minBreakDeparture = minBreakDeparture < 10 ? "0" + minBreakDeparture : minBreakDeparture;
-        secBreakDeparture = secBreakDeparture < 10 ? "0" + secBreakDeparture : secBreakDeparture;
-        
-        // display the new timer
-        timer.innerText = `${minWorkDeparture}:${secWorkDeparture}`;
-
-        document.getElementById("popup").classList.remove("show");
-        buttonStart.style.display = "block";
-        buttonSettings.style.display = "block";
-    }
-
-});
-
-
-
 // button to reset completely the timer
 buttonReset.addEventListener("click", () => {
     clearInterval(timeRunning);
@@ -89,7 +67,7 @@ buttonReset.addEventListener("mouseout", () => {
     buttonReset.setAttribute("src", "images/stopButton.png");
 })
 
-
+// button to open the setting's window
 buttonSettings.addEventListener("click", () => {
     document.getElementById("popup").classList.add("show");
     buttonStart.style.display = "none";
@@ -104,6 +82,27 @@ buttonSettings.addEventListener("mouseout", () => {
     buttonSettings.setAttribute("src", "images/setTimer.png");
 })
 
+// button to personalize Work time and Break time
+buttonSetTime.addEventListener("click", () => {
+    // collect data from the input
+    if (setTimeCollectData()) {
+        // prepare the display
+        minWorkDeparture = minWorkDeparture < 10 ? "0" + minWorkDeparture : minWorkDeparture;
+        secWorkDeparture = secWorkDeparture < 10 ? "0" + secWorkDeparture : secWorkDeparture;
+        minBreakDeparture = minBreakDeparture < 10 ? "0" + minBreakDeparture : minBreakDeparture;
+        secBreakDeparture = secBreakDeparture < 10 ? "0" + secBreakDeparture : secBreakDeparture;
+        
+        // display the new timer
+        timer.innerText = `${minWorkDeparture}:${secWorkDeparture}`;
+
+        document.getElementById("popup").classList.remove("show");
+        buttonStart.style.display = "block";
+        buttonSettings.style.display = "block";
+    }
+
+});
+
+// FUNCTION
 // initialize time
 function setTime() {
     // switch to break time if it was work time
@@ -146,24 +145,20 @@ function timeRunningFunction() {
 }
 
 function setTimeCollectData() {
+    //check if the data are correct
     if (document.getElementById("minWork").value < 0
     || document.getElementById("secWork").value < 0
     || document.getElementById("minBreak").value < 0
     || document.getElementById("secBreak").value < 0
     || document.getElementById("secWork").value > 59
     || document.getElementById("secBreak").value > 59) {
-        //document.getElementById("error").innerHTML = "Please enter correct data";
         return false;
     }
     else {
         minWorkDeparture = document.getElementById("minWork").value;
-        console.log(document.getElementById("minWork").value);
         secWorkDeparture = document.getElementById("secWork").value;
-        console.log(document.getElementById("secWork").value);
         minBreakDeparture = document.getElementById("minBreak").value;
-        console.log(document.getElementById("minBreak").value);
         secBreakDeparture = document.getElementById("secBreak").value;
-        console.log(document.getElementById("secBreak").value);
         document.getElementById("error").innerHTML = "";
         return true;
     }
